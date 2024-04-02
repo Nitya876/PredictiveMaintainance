@@ -58,10 +58,7 @@ h2 {
     opacity: 0;
     cursor: pointer;
 }
-.access{
-    display: flex;
-  justify-content: space-between;
-}
+
 
 .form .checkmark {
     position: absolute;
