@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <form action="" id="form" class="form">
+        <h2>Registration Form</h2>
+        <div class="form-group">
+            <label for="usertype">User Type:</label>
+            <select id="usertype" name="usertype" required>
+                <option value="" disabled selected>Select UserType</option>
+                <option value="admin">Admin</option>
+                <option value="operator">Operator</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your Name">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password:</label>
+            <input type="text" id="Password" name="Password" placeholder="Enter your Password" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Id:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your Email Id" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter your Phone Number" required>
+        </div>
+        <div class="form-group">
+            <label for="Employee_id">Employee Id:</label>
+            <input type="number" id="Employee_id" name="Employee_id" placeholder="Enter your Employee Id" required>
+        </div>
+        <div class="form-group">
+            <label>Accessibility:</label>
+            <div >
+            <label class="container">Sensor1
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Track Circuit
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Track Circuit A
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            
+            <label class="container">Track Circuit B
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Sensor2
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">Sensor3
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        </div>
+        <div class="btn">
+            <button type="submit" class="submit-btn">Create User</button>
+        </div>
+    </form>
+</body>
+</html>
+
+
