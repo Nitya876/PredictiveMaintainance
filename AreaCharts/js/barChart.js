@@ -21,6 +21,6 @@ const ctx = document.getElementById('myChart');
       }
     },
     options:{
-      responsive:false
+      responsive:true
     }
   });

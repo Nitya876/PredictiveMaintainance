@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+    font-weight: 480;
+}
+
+.form {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: rgb(225, 235, 247);
+}
+
+h2 {
+    text-align: center;
+}
+.form div {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.form input[type="text"],
+.form input[type="number"],
+.form .container input[type="checkbox"] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}

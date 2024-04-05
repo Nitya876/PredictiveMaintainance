@@ -18,7 +18,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background-color: rgb(225, 235, 247);
+    background-color: white;
+    /* background-color: rgb(225, 235, 247); */
 }
 
 h2 {
@@ -105,6 +106,14 @@ h2 {
     background-color: rgb(71, 70, 70);
 }
 
+.form-group input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+   
+
 .form-group ul{
 list-style:none;
 display: flex;
@@ -115,20 +124,21 @@ flex-direction: row;
     font-size: 16px;
     width: 100%;
     border-collapse: collapse;
-}
-.table-container table td {
-    padding: 5px;
+   
 }
 
-
+.error{
+    color: rgb(187, 7, 7);
+    font-size: 12px;
+}
 
 @media (max-width: 576px) {
     .table-container table td {
         width: 100%;
     }
-   .table-container{}
-    
+
 }
+
 @media (min-width: 577px) and (max-width:991){
    
 
@@ -142,8 +152,53 @@ flex-direction: row;
    
 }
 @media (min-width:992px) {
-
        .table-container table td {
-        width: 33.33%; 
+        width: 50%; 
+    }
+    
+  
+}
+
+
+@media (max-width: 361px) {
+    .table-container table td {
+        padding: 1px;
+        position: relative;
+    }
+
+    .form .container {
+        padding-left: 25px; 
+        padding-right: 3px; 
+        margin-bottom: 5px;
+        position: relative; 
+    }
+
+    .form .container input {
+        position: absolute;
+        top: 50%; 
+        left: 5px;
+        transform: translateY(-50%); 
+        margin-right: 5px; 
+    }
+
+    .form .checkmark {
+        height: 15px;
+        width: 20px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .form .container .checkmark:after {
+        content: "";
+        position: absolute;
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%) rotate(45deg); 
+        width: 5px;
+        height: 9px;
+        border: solid black;
+        border-width: 0 2px 2px 0;
     }
 }
+
