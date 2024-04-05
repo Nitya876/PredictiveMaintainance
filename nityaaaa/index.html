@@ -1,0 +1,455 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Predictive Maintenance</title>
+
+<!-- Montserrat Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+<!-- Material Icons -->
+<link
+	href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css"
+	href="styles.css" />
+
+
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=OIetr8upf4VeLsbxNkAw1a-uiCaz7XfIxFzrdTcVAVVZapVJXxvhY4DYqSMWNzM2ecJRCg5TInlqVSrlyeiadg" charset="UTF-8"></script></head>
+<body>
+	<div class="grid-container">
+
+		<!-- Header -->
+		<header class="header">
+			<div class="menu-icon" onclick="openSidebar()">
+				<span class="material-icons-outlined">menu</span>
+			</div>
+
+			<div class="header-left">
+				
+				<span>  User Not Found 
+				</span>
+			</div>
+						
+			<!-- <div class="header-right"> -->
+			<div class="header-right">
+
+				<ul>
+					<li><a class="active" href="#">Add User</a></li>
+					<li><a href="#">Device Onboarding</a></li>
+
+					<li class="dropdown">Zone <select id="zone"
+							name="zone">
+								<option value="" disabled selected>Select zone</option>
+								<option value="AllZone">All Zones</option>
+								<option value="zone1">Zone 1</option>
+								<option value="zone2">Zone 2</option>
+								<option value="zone3">Zone 3</option>
+								<option value="zone4">Zone 4</option>
+								<option value="zone5">Zone 5</option>
+						</select></li>
+					<li class="dropdown">Station <select
+							id="station" name="station">
+								<option value="" disabled selected>Select station</option>
+								<option value="AllStations">All Stations</option>
+								<option value="station1">Station 1</option>
+								<option value="station2">Station 2</option>
+								<option value="station3">Station 3</option>
+								<option value="station4">Station 4</option>
+								<option value="station5">Station 5</option>
+						</select></li> 
+				</ul>
+				<span class="material-icons-outlined text-primary" id="widgetsIcon">widgets</span>
+
+			</div>
+			
+		</header>
+		<!-- End Header -->
+
+		<!-- Sidebar -->
+		<aside id="sidebar">
+			<div class="sidebar-title">
+				<div class="sidebar-brand">
+					<span class="material-icons-outlined">inventory</span> Predictive
+					Maintenance
+				</div>
+				<span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+			</div>
+
+			<ul class="sidebar-list">
+
+				<a href="#dashboard" class="custom-link">
+					<li class="sidebar-list-item"><span
+						class="material-icons-outlined">dashboard</span> Dashboard</li>
+				</a>
+
+
+				<a href="#signals" class="custom-link">
+					<li class="sidebar-list-item">Signals</li>
+				</a>
+
+
+				<a href="#points" class="custom-link">
+					<li class="sidebar-list-item">Points</li>
+				</a>
+
+
+				<a href="#dc-track-circuits" class="custom-link">
+					<li class="sidebar-list-item">DC Track Circuits</li>
+				</a>
+
+
+				<a href="#axle-counters" class="custom-link">
+					<li class="sidebar-list-item">Axle Counters</li>
+				</a>
+
+
+				<a href="#aftc" class="custom-link">
+					<li class="sidebar-list-item">AFTC</li>
+				</a>
+
+
+				<a href="#level-crossing-gates" class="custom-link">
+					<li class="sidebar-list-item">Level Crossing Gates</li>
+				</a>
+
+				<a href="#relays" class="custom-link">
+					<li class="sidebar-list-item"">Relays</li>
+				</a>
+
+				<a href="#electronic-interlocking" class="custom-link">
+					<li class="sidebar-list-item">Electronic Interlocking</li>
+				</a>
+
+				<a href="#battery-charger " class="custom-link">
+					<li class="sidebar-list-item">IPS/Battery Charger</li>
+				</a>
+
+
+				<a href="#surge-protection-devices" class="custom-link">
+					<li class="sidebar-list-item">Surge Protection devices</li>
+				</a>
+
+
+				<a href="#ofc-cable" class="custom-link">
+					<li class="sidebar-list-item">OFC Cable</li>
+				</a>
+
+
+				<a href="#fuse-change-system" class="custom-link">
+					<li class="sidebar-list-item">Fuse Change System</li>
+				</a>
+
+
+				<a href="#battery" class="custom-link">
+					<li class="sidebar-list-item">Battery</li>
+				</a>
+
+
+
+				<a href="#earth-leakage-detector" class="custom-link">
+					<li class="sidebar-list-item">Earth Leakage Detector</li>
+				</a>
+
+
+				<a href="#cables" class="custom-link">
+					<li class="sidebar-list-item">Cables</li>
+				</a>
+
+
+				<a href="#block-instruments" class="custom-link">
+					<li class="sidebar-list-item">Block Instruments</li>
+				</a>
+
+
+				<a href="#ufsbi" class="custom-link">
+					<li class="sidebar-list-item">UFSBI</li>
+				</a>
+
+
+				<a href="#temp-humidity" class="custom-link">
+					<li class="sidebar-list-item">Temp & Humidity</li>
+				</a>
+
+
+				<a href="#end" class="custom-link">
+					<li class="sidebar-list-item">End</li>
+				</a>
+
+
+			</ul>
+		</aside>
+		<!-- End Sidebar -->
+
+		<!-- Main -->
+		<main class="main-container">
+
+			<!--start dashboard-->
+			<section id="dashboard">
+				<div class="main-title">
+					<p class="font-weight-bold">DASHBOARD</p>
+				</div>
+
+				<div class="main-cards">
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL ZONES</p>
+							<span class="material-icons-outlined text-blue">group_work</span>
+						</div>
+						<span class="text-primary font-weight-bold">10</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL STATIONS</p>
+							<span class="material-icons-outlined text-orange">domain</span>
+						</div>
+						<span class="text-primary font-weight-bold">600</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL SENSORS</p>
+							<span class="material-icons-outlined text-green">sensors</span>
+						</div>
+						<span class="text-primary font-weight-bold">6000</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL ALERTS</p>
+							<span class="material-icons-outlined text-red">notification_important</span>
+						</div>
+						<span class="text-primary font-weight-bold">5</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">Maintenance Require</p>
+							<span class="material-icons-outlined text-purple">engineering</span>
+						</div>
+						<span class="text-primary font-weight-bold">60</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">Maintenance Done</p>
+							<span class="material-icons-outlined text-skyblue">task_alt</span>
+						</div>
+						<span class="text-primary font-weight-bold">6</span>
+					</div>
+				</div>
+
+				<div class="charts">
+
+					<div class="charts-card">
+						<p class="chart-title">chart</p>
+						<div id="bar-chart"></div>
+					</div>
+
+					<div class="charts-card">
+						<p class="chart-title">chart</p>
+						<div id="area-chart"></div>
+					</div>
+				</div>
+			</section>
+			<!--  end dashboard -->
+
+			<!-- start signals  -->
+			<section id="signals">
+				<div class="main-title">
+					<p class="font-weight-bold">SIGNALS</p>
+				</div>
+				signals section
+			</section>
+			<!-- end signals -->
+
+			<!-- start Points -->
+			<section id="points">
+				<div class="main-title">
+					<p class="font-weight-bold">POINTS</p>
+				</div>
+				points section
+			</section>
+			<!-- end points -->
+
+			<!-- start DC Track Circuits -->
+			<section id="dc-track-circuits">
+				<div class="main-title">
+					<p class="font-weight-bold">DC TRACK CIRCUITS</p>
+				</div>
+				DC Track Circuits section
+			</section>
+			<!-- end DC Track Circuits -->
+
+
+			<!-- start Axle Counters -->
+			<section id="axle-counters">
+				<div class="main-title">
+					<p class="font-weight-bold">AXLE COUNTERS</p>
+				</div>
+				Axle Counters
+			</section>
+			<!-- end Axle Counters -->
+
+			<!-- start AFTC -->
+			<section id="aftc">
+				<div class="main-title">
+					<p class="font-weight-bold">AFTC</p>
+				</div>
+				AFTC section
+			</section>
+			<!-- end AFTC -->
+
+			<!-- start Level Crossing Gates -->
+			<section id="level-crossing-gates">
+				<div class="main-title">
+					<p class="font-weight-bold">LEVEL CROSSING GATES</p>
+				</div>
+				Level Crossing Gates section
+			</section>
+			<!-- end Level Crossing Gates -->
+
+			<!-- start Relays -->
+			<section id="relays">
+				<div class="main-title">
+					<p class="font-weight-bold">RELAYS</p>
+				</div>
+				Relays section
+			</section>
+			<!-- end Relays -->
+
+			<!-- start Electronic Interlocking -->
+			<section id="electronic-interlocking">
+				<div class="main-title">
+					<p class="font-weight-bold">ELECTRONIC INTERLOCKING</p>
+				</div>
+				Electronic Interlocking section
+			</section>
+			<!-- end Electronic Interlocking -->
+
+			<!-- start IPS/Battery Charger -->
+			<section id="battery-charger">
+				<div class="main-title">
+					<p class="font-weight-bold">BATTERY CHARGER</p>
+				</div>
+				IPS/Battery Charger section
+			</section>
+			<!-- end IPS/Battery Charger -->
+
+			<!-- start Surge Protection devices -->
+			<section id="surge-protection-devices">
+				<div class="main-title">
+					<p class="font-weight-bold">SURGE PROTECTION DEVICES</p>
+				</div>
+				Surge Protection devices section
+			</section>
+			<!-- end Surge Protection devices -->
+
+			<!-- start OFC Cable -->
+			<section id="ofc-cable">
+				<div class="main-title">
+					<p class="font-weight-bold">OFC CABLE</p>
+				</div>
+				OFC Cable section
+			</section>
+			<!-- end OFC Cable -->
+
+			<!-- start Fuse Change System -->
+			<section id="fuse-change-system">
+				<div class="main-title">
+					<p class="font-weight-bold">FUSE CHANGE SYSTEM</p>
+				</div>
+				Fuse Change System section
+			</section>
+			<!-- end Fuse Change System -->
+
+			<!-- start Battery -->
+			<section id="battery">
+				<div class="main-title">
+					<p class="font-weight-bold">BATTERY</p>
+				</div>
+				Battery section
+			</section>
+			<!-- end Battery -->
+
+			<!-- start Earth Leakage Detector -->
+			<section id="earth-leakage-detector">
+				<div class="main-title">
+					<p class="font-weight-bold">EARTH LEAKAGE DETECTOR</p>
+				</div>
+				Earth Leakage Detector section
+			</section>
+			<!-- end Earth Leakage Detector -->
+
+			<!-- start cables -->
+			<section id="cables">
+				<div class="main-title">
+					<p class="font-weight-bold">CABLES</p>
+				</div>
+				Cables section
+			</section>
+			<!-- end Cables -->
+
+			<!-- start Block Instruments -->
+			<section id="block-instruments">
+				<div class="main-title">
+					<p class="font-weight-bold">BLOCK INTSRUMENT</p>
+				</div>
+				Block Instruments section
+			</section>
+			<!-- end Block Instruments -->
+
+			<!-- start UFSBI -->
+			<section id="ufsbi">
+				<div class="main-title">
+					<p class="font-weight-bold">UFSBI</p>
+				</div>
+				UFSBI section
+			</section>
+			<!-- end UFSBI -->
+
+			<!-- start Temp & Humidity -->
+			<section id="temp-humidity">
+				<div class="main-title">
+					<p class="font-weight-bold">TEMPERATURE AND HUMIDITY</p>
+				</div>
+				Temp & Humidity section
+			</section>
+			<!-- end Temp & Humidity -->
+
+			<!-- start End -->
+			<section id="end">
+				<div class="main-title">
+					<p class="font-weight-bold">END</p>
+				</div>
+				End section
+			</section>
+			<!-- end End -->
+
+		</main>
+		<!-- End Main -->
+
+	</div>
+
+	<!-- Scripts -->
+	<!-- ApexCharts -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+	<!-- Custom JS -->
+	<script src="scripts.js"></script>
+</body>
+</html>
