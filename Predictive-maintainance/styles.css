@@ -7,35 +7,14 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-
 /* start header-right  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  .header-right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 20px;
+    /* padding: 0 20px; */
+    font-weight: 500;
   }
 
 .header-right ul {
@@ -46,12 +25,15 @@ body {
 }
 
 .header-right ul li {
-    margin-left: 20px;
+  position: relative;
+  float: left;
+  margin-left: 20px;
 }
 
 .header-right ul li a {
     text-decoration: none;
-    color: #333; 
+    color: #666666;
+    /* color: #333;  */
 }
 
 Styling for select elements
@@ -60,15 +42,6 @@ Styling for select elements
     margin-left: 5px;
 }
 
-Hide the checkbox used for the menu toggle
-#check {
-    display: none;
-}
-
-Initially hide the menu icon
-#checkbtn {
-    display: none;
-}
 
 
 @media screen and (max-width: 768px) {
@@ -575,7 +548,58 @@ Media query for Laptop screen
 
 .widgets-icon{
   cursor: pointer;
-  margin-left: 5px;
+
+}
+
+
+/*-----HEADER PROFILE -------*/
+
+.header-profile-text{
+  padding-left: 5px ;
+  padding-right: 5px;
+ 
+
+}
+
+.header-left{
+align-items: center;
+ cursor: pointer;
+ 
+}
+
+.profileBox {
+ 
+
+ margin: 0;
+padding: 0;}
+
+
+.profileBox ul{
+
+  height: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff; 
+ 
+   margin-top: 7.5rem; 
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12); 
+padding-left: 20px;
+padding-right: 20px; ;
+}
+
+.profileBox ul li{
+  list-style: none;
+  padding-top: 10px;
+}
+
+
+.profileBox ul li a{
+  text-decoration: none;
+  font-weight: 500;
+  color: #666666;
+  flex-direction: column;
+
 }
 
 /* Medium <= 992px */
@@ -602,7 +626,7 @@ Media query for Laptop screen
 
  
 }
-@media (min-width:768px) {
+@media (min-width:769px) {
   #widgetsIcon{
     display: none;
   }
@@ -620,13 +644,34 @@ Media query for Laptop screen
     grid-template-columns: 1fr;
     margin-top: 30px;
   }
+  
 
+  .header-right.responsive ul {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; 
+    position: relative;
+    margin-top: 12.5rem;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12); 
+ padding-left: 20px;
+ padding-right: 20px; ;
+  }
+  .header-right.responsive ul li:hover{
+
+  font-weight: 600;
+  color: #666666;
+  cursor: pointer;
+
+  }
+
+  
 
 }
 
+
 /* Extra Small <= 576px */
 @media screen and (max-width: 576px) {
-  .header-left {
+  .header-profile-text {
     display: none;
   }
 

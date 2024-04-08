@@ -28,40 +28,22 @@ function closeSidebar() {
 }
 
 
+// ------------For Header-left/Profile-------------
+
+    function openProfile() {
+        var profileBox = document.getElementById("profileBox");
+        profileBox.style.display = (profileBox.style.display === "block") ? "none" : "block";
+    }
+
+
+
+
 /*for header-right*/
 
-
-
-
-// Function to handle the click event on the widgets icon
-function openNavbar() {
-  // Toggle the 'show' class on the header-right element
-  document.getElementById('headerRight').classList.toggle('show');
+function toggleNavbar() {
+  let navbar = document.getElementById("headerRight");
+  navbar.classList.toggle("responsive");
 }
-
-
-
-// document.getElementById('checkbtn').addEventListener('click', function() {
-//     var checkbox = document.getElementById('check');
-//     checkbox.checked = !checkbox.checked;
-// });
-
-// let navbarOpen = false;
-// const navbar = document.getElementById('navbar');
-
-// function navbarOpen() {
-//   if (!navbarOpen) {
-//     navbar.classList.add('navbar-responsive');
-//     navbarOpen = true;
-//   }
-// }
-
-// function navbarclose() {
-//   if (navbarOpen) {
-//     navbar.classList.remove('navbar-responsive');
-//     navbarOpen = false;
-//   }
-// }
 
 
 
