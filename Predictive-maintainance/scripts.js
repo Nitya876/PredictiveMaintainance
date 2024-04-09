@@ -31,12 +31,9 @@ function closeSidebar() {
 // ------------For Header-left/Profile-------------
 
     function openProfile() {
-        var profileBox = document.getElementById("profileBox");
+        let profileBox = document.getElementById("profileBox");
         profileBox.style.display = (profileBox.style.display === "block") ? "none" : "block";
     }
-
-
-
 
 /*for header-right*/
 
@@ -45,8 +42,32 @@ function toggleNavbar() {
   navbar.classList.toggle("responsive");
 }
 
+//-------ADD USER POP_UP PAGE--------
+document.getElementById("addUser").addEventListener("click", function() {
+  document.getElementById("popupContainer").style.display = "block";
+});
+
+function closePopup() {
+  document.getElementById("popupContainer").style.display = "none";
+}
+
+//-----FORM ACCESIBILITY------
 
 
+
+// const accessibilityDropdown = document.getElementById('accessibility');
+
+// accessibilityDropdown.addEventListener('change', function() {
+//     const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+//     const selectedItemsContainer = document.getElementById('selected-items');
+//     const countContainer = document.getElementById('selected-count');
+    
+//     // Display selected items
+//     selectedItemsContainer.textContent = selectedOptions.join(', ');
+    
+//     // Display count of selected items
+//     countContainer.textContent = selectedOptions.length;
+// });
 
 
 // ---------- CHARTS ----------
