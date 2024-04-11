@@ -55,19 +55,36 @@ function closePopup() {
 
 
 
-// const accessibilityDropdown = document.getElementById('accessibility');
 
-// accessibilityDropdown.addEventListener('change', function() {
-//     const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
-//     const selectedItemsContainer = document.getElementById('selected-items');
-//     const countContainer = document.getElementById('selected-count');
-    
-//     // Display selected items
-//     selectedItemsContainer.textContent = selectedOptions.join(', ');
-    
-//     // Display count of selected items
-//     countContainer.textContent = selectedOptions.length;
-// });
+new MultiSelectTag('access', {
+  rounded: true,    // default true
+  shadow: true,      // default false
+  placeholder: 'Search',  // default Search...
+  width:"50%",
+  tagColor: {
+      textColor: 'black',
+      borderColor: 'gray',
+      bgColor: '	#DCDCDC',
+  },
+  onChange: function(values) {
+      console.log(values)
+  }
+})
+
+// Get reference to the div with class "add-user-card"
+var addUserCard = document.querySelector('.add-user-card');
+
+// Add a click event listener to the "add-user-card" div
+addUserCard.addEventListener('click', function() {
+    // Toggle the height of the div when clicked
+    if (addUserCard.style.height === '400px') {
+        // If the height is already 400px, set it to auto
+        addUserCard.style.height = 'auto';
+    } else {
+        // Otherwise, set it to 400px
+        addUserCard.style.height = '400px';
+    }
+});
 
 
 // ---------- CHARTS ----------
