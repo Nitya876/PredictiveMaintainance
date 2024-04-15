@@ -71,20 +71,27 @@ new MultiSelectTag('access', {
   }
 })
 
-// Get reference to the div with class "add-user-card"
-var addUserCard = document.querySelector('.add-user-card');
 
-// Add a click event listener to the "add-user-card" div
-addUserCard.addEventListener('click', function() {
-    // Toggle the height of the div when clicked
-    if (addUserCard.style.height === '400px') {
-        // If the height is already 400px, set it to auto
-        addUserCard.style.height = 'auto';
-    } else {
-        // Otherwise, set it to 400px
-        addUserCard.style.height = '400px';
-    }
-});
+// EXISTING USERS AND EXISTING OPERATORS
+
+  document.addEventListener('DOMContentLoaded', function () {
+        const existingUsersCard = document.getElementById('existing-users-card');
+        const existingOperatorsCard = document.getElementById('existing-operators-card');
+        const additionalInfoUsers = document.getElementById('additional-info-users');
+        const additionalInfoOperators = document.getElementById('additional-info-operators');
+
+        existingUsersCard.addEventListener('click', function () {
+            additionalInfoUsers.classList.toggle('show');
+            // Hide additional info for operators if it's open
+            additionalInfoOperators.classList.remove('show');
+        });
+
+        existingOperatorsCard.addEventListener('click', function () {
+            additionalInfoOperators.classList.toggle('show');
+            // Hide additional info for users if it's open
+            additionalInfoUsers.classList.remove('show');
+        });
+    });
 
 
 // ---------- CHARTS ----------

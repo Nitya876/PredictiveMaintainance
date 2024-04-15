@@ -91,7 +91,7 @@
 		<!-- ADD USERS -->
 			<div class="popup-container" id="popupContainer">
 				<div class="popup-content">
-				  <span class="close-icon" onclick="closePopup()"><span class="material-symbols-outlined">
+				  <span class="close-icon" onclick="closePopup()" style="position: fixed; margin-top: -15px; margin-left: -18px;"><span class="material-symbols-outlined">
 					close
 					</span></span>
 				  <!-- Your popup content here -->
@@ -99,9 +99,9 @@
 				  <form action="" id="form" class="form" onsubmit="return validateForm()">
 					<h3>Create New User</h3>
 					<div class="form-group">
-						<label for="usertype">User Type:</label>
+						<label for="usertype" class="form-label">User Type:</label>
 						<select id="usertype" name="usertype" >
-							<option value="" disabled selected>Select UserType</option>
+							<option value=""   disabled selected>Select UserType</option>
 							<!-- <option value="admin">Admin</option> -->
 							<option value="operator">Operator</option>
 							<option value="user">User</option>
@@ -109,35 +109,35 @@
 						<div id="usertype-error" class="error"></div>
 					</div>
 					<div class="form-group">
-						<label for="name">Name:</label>
+						<label for="name" class="form-label">Name:</label>
 						<input type="text" id="name" name="name" placeholder="Enter your Name" >
 						<div id="name-error" class="error"></div>
 					</div>
 					<div class="form-group">
-						<label for="Password">Password:</label>
+						<label for="Password" class="form-label">Password:</label>
 						<input type="password" id="Password" name="Password" placeholder="Enter your Password" >
 						<i class="fa-solid fa-eye-slash" id="pass-toggle-btn" onclick="togglePasswordVisibility()"></i>
 						<div id="password-error" class="error"></div>
 					</div>
 					<div class="form-group">
-						<label for="email">Email Id:</label>
+						<label for="email" class="form-label">Email Id:</label>
 						<input type="text" id="email" name="email" placeholder="Enter your Email Id" >
 						<div id="email-error" class="error"></div>
 					</div>
 					<div class="form-group">
-						<label for="phone">Phone:</label>
+						<label for="phone" class="form-label">Phone:</label>
 						<input type="number" id="phone" name="phone" pattern="[0-0]{10}" placeholder="Enter your Phone Number" >
 						<div id="phone-error" class="error"></div>
 					</div>
 					<div class="form-group">
-						<label for="employee-id">Employee Id:</label>
+						<label for="employee-id" class="form-label">Employee Id:</label>
 						<input type="number" id="employee-id" name="employee-id" placeholder="Enter your Employee Id" >
 					</div>
-					 <!-- <div class="form-group"> -->
+					  
 						
-						<label for="accessibility">Accessibility:
+						<label for="accessibility" class="accessibility" class="form-label">	Accessibility:
 						<select name="accessibility" id="access" multiple >
-							
+						
 							<option value="1">Signals</option>
 							<option value="2">Points</option>
 							<option value="3">DC Track Circuit</option>
@@ -156,8 +156,8 @@
 							<option value="16">Block Instruments</option>
 							<option value="17">UFSBI</option>
 							<option value="18">Temperature And Humidity of all Devices</option>
-						</select> </label>
-
+						</select> 
+					</label>
 					
 					<div class="btn">
 						<button type="submit" class="submit-btn">Create User</button>
@@ -165,20 +165,30 @@
 					
 				</form>
 				
-				<div class="add-user-card">
+				<div class="add-user-card" >
 					<div class="card">
 						<div class="card-inner">
-							<p class="text-primary">Existing Users</p>
+							<p class="existing-users" id="existing-users-card">Existing Users</p>
 							<span class="material-symbols-outlined">group</span>
 						</div>
 						<span class="text-primary font-weight-bold">30</span>
+						
 					</div>
+					<div class="additional-info" id="additional-info-users">
+						<div class="existing-users-content" ></div>
+					</div>
+					
 					<div class="card">
-						<div class="card-inner">
-							<p class="text-primary">Existing Operators</p>
+						<div class="card-inner" >
+							<p class="existing-operators " id="existing-operators-card" >Existing Operators</p>
 							<span class="material-icons-outlined text-purple">engineering</span>
 						</div>
 						<span class="text-primary font-weight-bold">60</span>
+
+						
+					</div>
+					<div class="additional-info" id="additional-info-operators">
+						<div class="existing-operators-content"></div>
 					</div>
 				</div>
 				
