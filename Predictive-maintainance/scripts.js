@@ -6,6 +6,16 @@ function logout() {
 
 
 
+    function changePasswordPopUp() {
+      var cpDiv = document.getElementById("changePasswordPopUpDiv");
+      cpDiv.style.display = (cpDiv.style.display === "block") ? "none" : "block";
+      var profileBox = document.getElementById("profileBox");
+      profileBox.style.marginTop = (cpDiv.style.display === "block") ? "2rem" : "2rem";
+  }
+  
+      
+    
+      
 
 
 // SIDEBAR TOGGLE

@@ -333,6 +333,7 @@ Styling for select elements
 }
 
 .charts-card {
+  z-index: -1;
   background-color: #ffffff;
   margin-bottom: 20px;
   padding: 25px;
@@ -401,16 +402,16 @@ Styling for select elements
 .profileBox {
  
 
-margin-top: 10rem;
-position: absolute;
+margin-top: 2rem; 
+/* position: absolute; */
 padding: 0;
 
 }
 
 
 .profileBox ul{
-  z-index: -1;
-  width: 100px;
+  z-index: 1;
+  position: relative;
   flex-direction: column;
   background-color: #fff; 
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12); 
@@ -492,6 +493,10 @@ h3{
   margin-bottom: 20px;
 }
 .form-label {
+  font-weight: 500;
+ 
+}
+.accessibility{
   font-weight: 500;
 }
 .form input[type="text"],
@@ -623,6 +628,9 @@ border: 1px solid black;
     padding-left:15% ;
  padding-right:15% ;
   }
+  .profileBox ul{
+    position: fixed;
+  }
 
  
  
@@ -630,6 +638,10 @@ border: 1px solid black;
 @media (min-width:769px) {
   #widgetsIcon{
     display: none;
+  }
+  .profileBox ul{
+    position: fixed;
+  
   }
   
 }
@@ -685,7 +697,9 @@ border: 1px solid black;
 .popup-content{
   width: 90vw;
 }
-
+.profileBox ul{
+  position: fixed;
+}
 }
 
 /* Extra Small <= 576px */
@@ -696,8 +710,9 @@ border: 1px solid black;
   .popup-content{
     width: 100vw;
   }
-  
- 
+  .profileBox ul{
+    position: fixed;
+  }
 
 }
 

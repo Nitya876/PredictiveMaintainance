@@ -44,17 +44,48 @@
 				<span class="header-profile-text" >User Not Found 
 				</span>
 			</div>
-			<div id="profileBox" class="profileBox" style="display: none;">
+
+
+
+
+
+
+
+
+			<div id="profileBox" class="profileBox" style="display: none; position:fixed;" >
 				<!-- Profile box content -->
 				<ul>
-				<li><a href="profile"><span class="material-symbols-outlined">
+				<li><a href="#"><span class="material-symbols-outlined">
 					person
 					</span>Profile</a></li>
-				
-				<li><a onclick="logout()"><span class="material-symbols-outlined" style="color: red; ">
-					logout
-					</span>Logout</button></li>
-				</ul>
+					<li ><a onclick="changePasswordPopUp()"><span class="material-icons-outlined" style="color: blue;">lock_reset</span>Change Password</a>
+						<div id="changePasswordPopUpDiv" style="display:none;">
+							<form action="/changePassword" method="post" id="form" class="form">
+								<h2>Form</h2>
+								<div > 
+									<label for="OldPassword">Old Password:</label>
+									<input type="text" id="OldPassword" name="oldPassword" placeholder="Enter your Password" required>
+								</div>
+								<div >
+									<label for="Password">Password:</label>
+									<input type="text" id="Password" name="password" placeholder="Enter new Password" required>
+								</div>
+								<div >
+									<label for="rePassword">Re-Password:</label>
+									<input type="text" id="rePassword" name="rePassword" placeholder="Re-Enter new Password" required>
+								</div>
+							   
+							  
+								<div >
+									<button type="submit" >Change</button>
+								</div>
+							</form>
+						
+						</div>
+						</li>
+						<li ><a onclick="logout()"><span class="material-icons-outlined" style="color: red;"> logout </span>Logout </a></li>					
+						<!-- <li><a href=""> <span class="material-icons-outlined text-skyblue"> person </span>Profile </a></li> -->
+					</ul>
 			</div>
 						
 			<!-- header-right -->
