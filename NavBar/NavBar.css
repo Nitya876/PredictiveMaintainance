@@ -151,13 +151,11 @@ nav ul li a:hover {
 @media (min-width:992px)  {
 
 
-  label.username {
+label.username {
     margin-left: 160px;
     
 }
-#checkbtn{
-  display: none;
-}
+
 
 }
 

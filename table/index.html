@@ -1,0 +1,1022 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Predictive Maintenance</title>
+
+<!-- Montserrat Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+<!-- Material Icons -->
+<link
+	href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/css/styles.css" />
+<!-- -------------------added section------------------ -->
+
+<!-- External library for accessibility -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+
+<!-- Logout-icon -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<!-- -------------------added section------------------ -->
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5Lb55lNl5KLm-Rl3isHRB1KgncM8TdA7FvorCNkimfp9zmkfH-0XJHHm-Qr2X4yG_5zySgzRg6sZzuXLeop6Gg" charset="UTF-8"></script></head>
+<body>
+	<div class="grid-container">
+
+		<!-- Header -->
+		<header class="header">
+			<div class="menu-icon" onclick="openSidebar()">
+				<span class="material-icons-outlined">menu</span>
+			</div>
+
+			<div class="header-left" onclick="openProfile1()">
+
+				<!-- added section  -->
+				<span class="material-icons-outlined text-blue">
+					manage_accounts<!-- account_circle -->
+				</span>
+				<!-- <span class="header-profile-text" >User Not Found 
+				</span> -->
+
+				
+				<span class="header-profile-text">  Priti (ADMIN) 
+				</span>
+			</div>
+
+			<div id="profileBox" class="profileBox" style="display: none;">
+				<!-- Profile box content -->
+				<ul style="padding: 8px;">
+					<li><span> 
+							 Priti (ADMIN)
+							
+					</span><br> <span>Email: admin@gmail.com</span><br> <span>Phone
+							No. : 7082270402</span></li>
+					<li><a onclick="changePasswordPopUp1()"><span
+							class="material-icons-outlined" style="color: blue;">lock_reset</span>Change
+							Password</a>
+						<div id="changePasswordPopUpDiv"
+							style="display: none; ">
+							<form method="post" id="changePasswordForm" class="form">
+								<h2>Change Password</h2>
+								<div >
+									<label for="OldPassword">Old Password:</label> <input
+										type="password" id="oldPassword" name="oldPassword"
+										placeholder="Enter your Password" required>
+								</div>
+								<div>
+									<label for="NewPassword">New Password:</label> <input
+										type="password" id="newPassword" name="newPassword"
+										placeholder="Enter new Password" required>
+								</div>
+								<div>
+									<label for="rePassword">Re-Password:</label> <input
+										type="password" id="rePassword" name="rePassword"
+										placeholder="Re-Enter new Password" required>
+								</div>
+
+
+								<div >
+									<button type="submit" class="submit-btn">Change</button>
+								</div>
+							</form>
+
+
+						</div></li>
+					<li><a onclick="logout()"><span
+							class="material-icons-outlined" style="color: red;">
+								logout </span>Logout </a></li>
+					<!-- <li><a href=""> <span class="material-icons-outlined text-skyblue"> person </span>Profile </a></li> -->
+				</ul>
+				<!-- added section  -->
+			</div>
+
+			<!-- header-right -->
+			<div class="header-right" id="headerRight">
+				<ul>
+					<!-- user admin operator accessbility -->
+
+					
+					<li><a class="active" href="#" id="addUser">User
+							Management</a></li>
+					<li><a href="#">Device Management</a></li>
+					
+
+					<li class="dropdown">Zone <select id="zone" name="zone">
+							<option value="" disabled selected>Select zone</option>
+							<option value="AllZone">All Zones</option>
+							<option value="zone1">Zone 1</option>
+							<option value="zone2">Zone 2</option>
+							<option value="zone3">Zone 3</option>
+							<option value="zone4">Zone 4</option>
+							<option value="zone5">Zone 5</option>
+					</select></li>
+					<li class="dropdown">Station <select id="station"
+						name="station">
+							<option value="" disabled selected>Select station</option>
+							<option value="AllStations">All Stations</option>
+							<option value="station1">Station 1</option>
+							<option value="station2">Station 2</option>
+							<option value="station3">Station 3</option>
+							<option value="station4">Station 4</option>
+							<option value="station5">Station 5</option>
+					</select></li>
+				</ul>
+				<div class="widgets-icon" onclick="toggleNavbar()">
+					<span class="material-icons-outlined text-primary" id="widgetsIcon">widgets</span>
+				</div>
+			</div>
+
+			<!-- ADD USERS -->
+			<div class="popup-container" id="popupContainer">
+				<div class="popup-content">
+					<span class="close-icon" onclick="closePopup()"
+						style="position: fixed; margin-top: -17px; margin-left: -20px;"><span
+						class="material-symbols-outlined"> close </span></span>
+					<!-- Your popup content here -->
+					<form id="addUserForm" class="form"
+						onsubmit="return validateForm()">
+						<h3>Create New User</h3>
+						<div class="form-group">
+							<label for="role" class="form-label">User Type:</label> <select
+								id="role" name="role">
+								<option value="" disabled selected>Select UserType</option>
+								<!-- <option value="admin">Admin</option> -->
+								<option value="ROLE_OPERATOR">Operator</option>
+								<option value="ROLE_USER">User</option>
+							</select>
+							<div id="usertype-error" class="error"></div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="form-label">Name:</label> <input
+								type="text" id="name" name="name" placeholder="Enter your Name">
+							<div id="name-error" class="error"></div>
+						</div>
+						<div class="form-group">
+							<label for="Password" class="form-label">Password:</label> <input
+								type="password" id="password" name="password"
+								placeholder="Enter your Password"> <i
+								class="fa-solid fa-eye-slash" id="pass-toggle-btn"
+								onclick="togglePasswordVisibility()"></i>
+							<div id="password-error" class="error"></div>
+						</div>
+						<div class="form-group">
+							<label for="email" class="form-label">Email Id:</label> <input
+								type="text" id="email" name="email"
+								placeholder="Enter your Email Id">
+							<div id="email-error" class="error"></div>
+						</div>
+						<div class="form-group">
+							<label for="phone" class="form-label">Phone:</label> <input
+								type="number" id="phone" name="phone" pattern="[0-0]{10}"
+								placeholder="Enter your Phone Number">
+							<div id="phone-error" class="error"></div>
+						</div>
+						<div class="form-group">
+							<label for="empId" class="form-label">Employee Id:</label>
+							<input type="number" id="empId" name="empId"
+								placeholder="Enter your Employee Id">
+						</div>
+
+
+						<label for="accessibility" class="accessibility"
+							class="form-label"> Accessibility: 
+						<select name="accessibility" id="access" multiple>
+
+								<option value="signal">Signals</option>
+								<option value="point">Points</option>
+								<option value="dcTrackCircuit">DC Track Circuit</option>
+								<option value="axleCounter">AxleCounters</option>
+								<option value="aftc">AFTC</option>
+								<option value="levelCrossingGate">Level Crossing Gates</option>
+								<option value="relay">Relays</option>
+								<option value="electronicInterlocking">Electronic Interlocking</option>
+								<option value="batteryCharger">Integrated Power Supply/Battery Charger</option>
+								<option value="surgeProtectionDevice">Surge Protection Devices</option>
+								<option value="ofcCable">OFC Cable</option>
+								<option value="fuseAutoChangeoverSystem">Fuse AutoChangeover System</option>
+								<option value="battery">Battery</option>
+								<option value="earthLeakageDetector">Earth Leakage DEtector</option>
+								<option value="cable">Cables</option>
+								<option value="blockInstrument">Block Instruments</option>
+								<option value="ufsbi">UFSBI</option>
+								<option value="temperatureHumidity">Temperature And Humidity of all Devices</option>
+								
+						</select>
+						</label>
+
+						<div class="btn">
+							<button type="submit" class="submit-btn">Create User</button>
+						</div>
+
+					</form>
+
+					<div class="add-user-card">
+						<div class="card  existing-users" id="existing-users-card">
+							<div class="card-inner">
+								<p>Existing Users</p>
+								<span class="material-symbols-outlined">group</span>
+							</div>
+							<span class="text-primary font-weight-bold">30</span>
+						</div>
+						<div class="additional-info" id="additional-info-users">
+							<div class="existing-users-content">
+								<table class="table" >
+									<thead>
+										<tr>
+											<th>Employee Id</th>
+											<th>Email Id</th>
+											<th>Name</th>
+											<th>Phone No.</th>
+											<th>Accessibility</th>
+											<th>Edit</th>
+											<th>Delete</th>
+										</tr>
+									</thead>
+									<tbody id="existingUserTable">
+										<!-- Content will be added here via JavaScript -->
+									</tbody>
+								</table>
+
+
+							</div>
+						</div>
+
+						<div class="card existing-users" id="existing-operators-card">
+							<div class="card-inner">
+								<p>Existing Operators</p>
+								<span class="material-icons-outlined text-purple">engineering</span>
+							</div>
+							<span class="text-primary font-weight-bold">60</span>
+						</div>
+						<div class="additional-info" id="additional-info-operators">
+							<div class="existing-operators-content">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Employee Id</th>
+											<th>Email Id</th>
+											<th>Name</th>
+											<th>Phone No.</th>
+											<th>Accessibility</th>
+											<th>Edit</th>
+											<th>Delete</th>
+										</tr>
+									</thead>
+									<tbody id="existingOperatorsTable">
+										<!-- Content will be added here via JavaScript -->
+									</tbody>
+								</table>							
+							
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</header>
+		<!-- End Header -->
+		
+		<!-- Sidebar -->
+		<aside id="sidebar">
+			<div class="sidebar-title">
+				<div class="sidebar-brand">
+					<span class="material-icons-outlined">inventory</span> Predictive
+					Maintenance
+				</div>
+				<span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+			</div>
+
+			 <ul class="sidebar-list">
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#dashboard')">
+			        <span class="material-icons-outlined">dashboard</span>Dashboard
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#signals')">
+			        Signals
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#points')">
+			        Points
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#dc-track-circuits')">
+			        DC Track Circuits
+			    </li>
+			    <li class="sidebar-list-item  custom-link" onclick="navigateTo('#axle-counters')">
+			        Axle Counters
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#aftc')">
+			        AFTC
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#level-crossing-gates')">
+			        Level Crossing Gates
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#relays')">
+			        Relays
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#electronic-interlocking')">
+			        Electronic Interlocking
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#battery-charger')">
+			        IPS/Battery Charger
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#surge-protection-devices')">
+			        Surge Protection devices
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#ofc-cable')">
+			        OFC Cable
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#fuse-change-system')">
+			        Fuse Change System
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#battery')">
+			        Battery
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#earth-leakage-detector')">
+			        Earth Leakage Detector
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#cables')">
+			        Cables
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#block-instruments')">
+			        Block Instruments
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#ufsbi')">
+			        UFSBI
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#temp-humidity')">
+			        Temp & Humidity
+			    </li>
+			    <li class="sidebar-list-item custom-link" onclick="navigateTo('#end')">
+			        End
+			    </li>
+			</ul>
+		</aside>
+		<!-- End Sidebar -->
+
+		<!-- Main -->
+		<main class="main-container">
+
+			<!--start dashboard-->
+			<section id="dashboard">
+				<div class="main-title">
+					<p class="font-weight-bold">DASHBOARD</p>
+				</div>
+
+				<div class="main-cards">
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL ZONES</p>
+							<span class="material-icons-outlined text-blue">group_work</span>
+						</div>
+						<span class="text-primary font-weight-bold">10</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL STATIONS</p>
+							<span class="material-icons-outlined text-orange">domain</span>
+						</div>
+						<span class="text-primary font-weight-bold">600</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL SENSORS</p>
+							<span class="material-icons-outlined text-green">sensors</span>
+						</div>
+						<span class="text-primary font-weight-bold">6000</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">TOTAL ALERTS</p>
+							<span class="material-icons-outlined text-red">notification_important</span>
+						</div>
+						<span class="text-primary font-weight-bold">5</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">Maintenance Require</p>
+							<span class="material-icons-outlined text-purple">engineering</span>
+						</div>
+						<span class="text-primary font-weight-bold">60</span>
+					</div>
+
+					<div class="card">
+						<div class="card-inner">
+							<p class="text-primary">Maintenance Done</p>
+							<span class="material-icons-outlined text-skyblue">task_alt</span>
+						</div>
+						<span class="text-primary font-weight-bold">6</span>
+					</div>
+				</div>
+
+				<div class="charts">
+
+					<div class="charts-card">
+						<p class="chart-title">chart</p>
+						<div id="bar-chart"></div>
+					</div>
+
+					<div class="charts-card">
+						<p class="chart-title">chart</p>
+						<div id="area-chart"></div>
+					</div>
+				</div>
+			</section>
+			<!--  end dashboard -->
+
+			<!-- start signals  -->
+			<section id="signals">
+				<div class="main-title">
+					<p class="font-weight-bold">SIGNALS</p>
+				</div>
+				
+					<div>
+					Signals section<br>Current:
+
+					<div id="signal-chart"></div>
+					<div id="chart1" class="chartorgraph"></div>
+					<div id="chart2" class="chartorgraph"></div>
+					<div id="chart3" class="chartorgraph"></div>
+					<div id="graphDataSetDiv" class="chartorgraph"></div>
+					<script>
+						document.addEventListener('DOMContentLoaded', function() {
+						    // Code to draw chart
+						    console.log("DOMContentLoaded event fired. Drawing chart...");
+						    console.log("Script inside");
+						    var currentJsArray = [[]];
+						    var voltageJsArray = [[]];
+						    var dateJsArray = [
+						        
+						];
+						    
+						    console.log(currentJsArray);
+						    console.log(voltageJsArray);
+						    console.log(dateJsArray);
+						    drawAreaChart(currentJsArray, dateJsArray, 'chart3');
+							
+							
+						
+						//To Multiseries Area Chart by method
+						
+						var currentWithDateArray =[
+						    
+						];
+							
+							
+							var voltageWithDateArray = [
+							    
+							];	
+							
+							var vibrationWithDateArray=null;
+							
+							var graphDataSet=[currentWithDateArray,voltageWithDateArray];
+							console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
+							drawMultiSeriesAreaChart(graphDataSet,'graphDataSetDiv','TestChart','day');
+						
+						});
+					</script>
+					</div>												
+				
+			</section>
+			<!-- end signals -->
+
+			<!-- start Points -->
+			<section id="points">
+				<div class="main-title">
+					<p class="font-weight-bold">POINTS</p>
+				</div>
+				
+					<div>
+						<p>Point Section</p>
+					
+					</div>
+				
+				 
+			                   
+			</section>
+			<!-- end points -->
+
+			<!-- start DC Track Circuits -->
+			<section id="dc-track-circuits">
+				<div class="main-title">
+					<p class="font-weight-bold">DC TRACK CIRCUITS</p>
+				</div>
+				
+					<div>
+						<p>DC Track Circuits section</p>
+					
+					</div>
+				
+				
+				
+			</section>
+			<!-- end DC Track Circuits -->
+
+
+			<!-- start Axle Counters -->
+			<section id="axle-counters">
+				<div class="main-title">
+					<p class="font-weight-bold">AXLE COUNTERS</p>
+				</div>
+				
+					<div>
+						<p>Axle Counters Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Axle Counters -->
+
+			<!-- start AFTC -->
+			<section id="aftc">
+				<div class="main-title">
+					<p class="font-weight-bold">AFTC</p>
+				</div>
+				
+					<div>
+						<p>Aftc Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end AFTC -->
+
+			<!-- start Level Crossing Gates -->
+			<section id="level-crossing-gates">
+				<div class="main-title">
+					<p class="font-weight-bold">LEVEL CROSSING GATES</p>
+				</div>
+				
+					<div>
+						<p>Level Crossing Gates section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Level Crossing Gates -->
+
+			<!-- start Relays -->
+			<section id="relays">
+				<div class="main-title">
+					<p class="font-weight-bold">RELAYS</p>
+				</div>
+				
+					<div>
+						<p>Relay section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Relays -->
+
+			<!-- start Electronic Interlocking -->
+			<section id="electronic-interlocking">
+				<div class="main-title">
+					<p class="font-weight-bold">ELECTRONIC INTERLOCKING</p>
+				</div>
+				
+					<div>
+						<p>Electronic Interlocking Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Electronic Interlocking -->
+
+			<!-- start IPS/Battery Charger -->
+			<section id="battery-charger">
+				<div class="main-title">
+					<p class="font-weight-bold">BATTERY CHARGER</p>
+				</div>
+				
+					<div>
+						<p>Battery Charger section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end IPS/Battery Charger -->
+
+			<!-- start Surge Protection devices -->
+			<section id="surge-protection-devices">
+				<div class="main-title">
+					<p class="font-weight-bold">SURGE PROTECTION DEVICES</p>
+				</div>
+				
+					<div>
+						<p>Surge Protection devices Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Surge Protection devices -->
+
+			<!-- start OFC Cable -->
+			<section id="ofc-cable">
+				<div class="main-title">
+					<p class="font-weight-bold">OFC CABLE</p>
+				</div>
+				
+					<div>
+						<p>Ofc Cable Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end OFC Cable -->
+
+			<!-- start Fuse Change System -->
+			<section id="fuse-change-system">
+				<div class="main-title">
+					<p class="font-weight-bold">FUSE CHANGE SYSTEM</p>
+				</div>
+				
+					<div>
+						<p>Fuse change system section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Fuse Change System -->
+
+			<!-- start Battery -->
+			<section id="battery">
+				<div class="main-title">
+					<p class="font-weight-bold">BATTERY</p>
+				</div>
+				
+					<div>
+						<p>DC Track Circuits section</p>
+						
+						<div class="chartorgraph">
+							<div id="TestChart1">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart2">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart3">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart4">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart5">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart6">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart7">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart8">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart9">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart10">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart11">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart12">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart13">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart14">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart15">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart16">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart17">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart18">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart19">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+						<div class="chartorgraph">
+							<div id="TestChart20">
+								<a href="#">
+									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
+								</a>
+							</div>
+							<!-- <a href="#">Expand</a> -->
+						</div>
+						
+		
+						<div>
+							<script>
+								document.addEventListener('DOMContentLoaded', function() {
+								    // Code to draw chart
+								    console.log("DOMContentLoaded event fired. Drawing chart...2222222222222");						   	
+								
+								//To Multiseries Area Chart by method
+								
+								var currentWithDateArray =[
+								    
+								];							
+									
+									var voltageWithDateArray = [
+									    
+									];	
+									
+									var vibrationWithDateArray=null;
+									
+									var graphDataSet=[currentWithDateArray,voltageWithDateArray];
+									console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
+									//drawMultiSeriesAreaChart(dataSet, targetElementId, chartTitle, xAxisBasis)
+									//drawMultiSeriesAreaChart(graphDataSet,'TestChart2','TestChart2','day');
+									for (var j = 1; j <= 20; j++) {
+										if(j%3==1)drawMultiSeriesAreaChart(graphDataSet, 'TestChart'+j, 'NewDelhi--Sensor'+j+'--SEN10'+j, 'week');
+										if(j%3==2)drawMultiSeriesAreaChart(graphDataSet, 'TestChart'+j, 'NewDelhi--Sensor'+j+'--SEN10'+j, 'day');
+										if(j%3==0)drawMultiSeriesAreaChart(graphDataSet, 'TestChart'+j, 'NewDelhi--Sensor'+j+'--SEN10'+j, 'month');
+									}
+									
+								});
+							</script>
+						</div>
+					</div>
+					<!-- If div end -->				
+				
+
+				
+			</section>
+			<!-- end Battery -->
+
+			<!-- start Earth Leakage Detector -->
+			<section id="earth-leakage-detector">
+				<div class="main-title">
+					<p class="font-weight-bold">EARTH LEAKAGE DETECTOR</p>
+				</div>
+				
+					<div>
+						<p>Earth leakage detector section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Earth Leakage Detector -->
+
+			<!-- start cables -->
+			<section id="cables">
+				<div class="main-title">
+					<p class="font-weight-bold">CABLES</p>
+				</div>
+				
+					<div>
+						<p>Cable Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Cables -->
+
+			<!-- start Block Instruments -->
+			<section id="block-instruments">
+				<div class="main-title">
+					<p class="font-weight-bold">BLOCK INTSRUMENT</p>
+				</div>
+				
+					<div>
+						<p>Block Instrument Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Block Instruments -->
+
+			<!-- start UFSBI -->
+			<section id="ufsbi">
+				<div class="main-title">
+					<p class="font-weight-bold">UFSBI</p>
+				</div>
+				
+					<div>
+						<p>UFSBI Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end UFSBI -->
+
+			<!-- start Temp & Humidity -->
+			<section id="temp-humidity">
+				<div class="main-title">
+					<p class="font-weight-bold">TEMPERATURE AND HUMIDITY</p>
+				</div>
+				
+					<div>
+						<p>Temperature and  Humidity Section</p>
+					
+					</div>
+				
+				
+			</section>
+			<!-- end Temp & Humidity -->
+
+			<!-- start End -->
+			<section id="end">
+				<div class="main-title">
+					<p class="font-weight-bold">END</p>
+				</div>
+				End section
+			</section>
+			<!-- end End -->
+
+		</main>
+		<!-- End Main (id: main-container)-->
+
+	</div>
+
+	<!-- Scripts -->
+	<!-- ApexCharts -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+
+	<!-- Include moment.js library -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="/js/scripts.js"></script>
+	<script src="/js/LoadGraph.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/js/JqueryScript.js"></script>
+
+</body>
+</html>

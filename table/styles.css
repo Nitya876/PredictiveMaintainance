@@ -1,0 +1,782 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: #e6e8ed;
+	color: #666666;
+	font-family: "Montserrat", sans-serif;
+}
+
+/* start header-right  */
+.header-right {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0 20px;
+	font-weight: 700;
+}
+
+.dropdown {
+	font-weight: 700;
+	color: #303030;
+}
+
+.header-right ul {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.header-right ul li {
+	margin-left: 20px;
+}
+
+.header-right ul li a {
+	text-decoration: none;
+	color: #333;
+}
+
+Styling for select elements
+.header-right select {
+	padding: 5px;
+	margin-left: 5px;
+}
+/* 
+Hide the checkbox used for the menu toggle */
+#check {
+	display: none;
+}
+
+/* Initially hide the menu icon */
+#checkbtn {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	.header-right {
+		justify-content: space-between;
+	}
+	.header-right ul {
+		flex-direction: column;
+		align-items: flex-start;
+		background-color: #f9f9f9;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 100%;
+		display: none;
+	}
+	.header-right ul li {
+		margin: 10px 0;
+	}
+	#check:checked ~ ul {
+		display: flex;
+	}
+	#checkbtn {
+		display: block;
+		cursor: pointer;
+	}
+	Adjust select dropdown width for smaller screens
+    .header-right select {
+		width: calc(100% - 10px);
+	}
+}
+
+/* end header-right  */
+.material-icons-outlined {
+	vertical-align: middle;
+	line-height: 1px;
+}
+
+.text-primary {
+	color: #666666;
+}
+
+.text-blue {
+	color: #246dec;
+}
+
+.text-red {
+	color: #cc3c43;
+}
+
+.text-green {
+	color: #367952;
+}
+
+.text-orange {
+	color: #f5b74f;
+}
+
+.text-purple {
+	color: #480091;
+}
+
+.text-skyblue {
+	color: #00b9b9;
+}
+
+.font-weight-bold {
+	font-weight: 600;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 260px 1fr 1fr 1fr;
+	grid-template-rows: 0.2fr 3fr;
+	grid-template-areas: "sidebar header header header"
+		"sidebar main main main";
+	height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+	grid-area: header;
+	height: 70px;
+	background-color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 30px 0 30px;
+	box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-icon {
+	display: none;
+}
+/* for testing */
+/* header-left {
+	display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+ */
+
+/* ---------- SIDEBAR ---------- */
+#sidebar {
+	grid-area: sidebar;
+	height: 100%;
+	background-color: #21232d;
+	color: #9799ab;
+	overflow-y: auto;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 20px 20px 20px;
+	margin-bottom: 30px;
+}
+
+.sidebar-title>span {
+	display: none;
+}
+
+.sidebar-brand {
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.sidebar-list {
+	padding: 0;
+	margin-top: 15px;
+	list-style-type: none;
+}
+
+.sidebar-list-item {
+	padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+	/* background-color: rgba(255, 255, 255, 0.2); */
+	background-color: rgba(5, 255, 255, 0.2);
+	cursor: pointer;
+}
+
+/* .sidebar-list-item > a {
+  
+   text-decoration: none; to remove underline  
+    color: #eaeaea; 
+   font-weight: 700;
+      
+   
+}
+ */
+.custom-link {
+	text-decoration: none;
+	color: #eaeaea;
+	font-weight: bold;
+}
+
+.sidebar-responsive {
+	display: inline !important;
+	position: absolute;
+	/*
+     z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+	z-index: 12 !important;
+}
+
+/* ---------- MAIN ---------- */
+.main-container {
+	grid-area: main;
+	overflow-y: auto;
+	padding: 20px 20px;
+}
+
+.main-title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-title>p {
+	font-size: 20px;
+}
+
+.main-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin: 20px 0;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 25px;
+	background-color: #ffffff;
+	box-sizing: border-box;
+	border: 1px solid #d2d2d3;
+	border-radius: 5px;
+	box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.card:first-child {
+	border-left: 7px solid #246dec;
+}
+
+.card:nth-child(2) {
+	border-left: 7px solid #f5b74f;
+}
+
+.card:nth-child(3) {
+	border-left: 7px solid #367952;
+}
+
+.card:nth-child(4) {
+	border-left: 7px solid #cc3c43;
+}
+
+.card:nth-child(5) {
+	border-left: 7px solid #480091;
+}
+
+.card:nth-child(6) {
+	border-left: 7px solid #00b9b9;
+}
+
+.card>span {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.card-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-inner>p {
+	font-size: 18px;
+}
+
+.card-inner>span {
+	font-size: 35px;
+}
+
+.charts {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.charts-card {
+	background-color: #ffffff;
+	margin-bottom: 20px;
+	padding: 25px;
+	box-sizing: border-box;
+	-webkit-column-break-inside: avoid;
+	border: 1px solid #d2d2d3;
+	border-radius: 5px;
+	box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+/* ---------- SCROLLBARS ---------- */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px #a5aaad;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #4f35a1;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #a5aaad;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/*---- WIDGETS-ICON---- */
+.widgets-icon {
+	cursor: pointer;
+}
+
+/*-----HEADER PROFILE -------*/
+.header-profile-text {
+	padding-left: 5px;
+	/* padding-right: 5px; */
+}
+
+.header-left {
+	cursor: pointer;
+}
+
+.profileBox {
+	position:absolute;
+	margin-top: 2rem;
+	padding: 0;
+	
+}
+
+.profileBox ul{
+  z-index: 1;
+  position: relative;
+  flex-direction: column;
+  background-color: #fff; 
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12); 
+ padding: 20px;
+}
+
+.profileBox ul li {
+	list-style: none;
+	padding-top: 10px;
+}
+
+.profileBox ul li a {
+	text-decoration: none;
+	font-weight: 500;
+	color: #666666;
+	flex-direction: column;
+}
+.profileBox a:hover{
+	cursor:pointer;
+}
+
+
+/* start  existing user  */
+
+.existing-users-content {
+    width: 100%; /* Ensures the div takes the full width of its parent */
+    overflow-x: auto; /* Enables horizontal scrolling when necessary */
+    margin: 0; /* Optional: Adjusts the margin to fit your layout */
+    padding: 15px; /* Adds some padding around the table */
+}
+
+.additional-info {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.existing-users-content {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 15px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.icon-button {
+    font-size: 16px;
+    color: #007bff;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.icon-button:hover {
+    color: #0056b3;
+}
+
+.fa-edit, .fa-trash {
+    margin-right: 5px;
+}
+
+.fa-trash {
+    color: #dc3545;
+}
+
+.fa-trash:hover {
+    color: #bd2130;
+}
+
+/* end  existing user  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------ADD USER POP_UP PAGE----------------------------------------------------------------------*/
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  right: 0;
+
+  
+}
+
+.popup-content {
+  max-height: 90vh; 
+  overflow-y: auto;
+  position: relative;
+  margin-top: 70px;
+  margin-left: 17%; 
+  width: 70vw;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #e6e8ed;
+  color: #666666;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+/*----create user FORM-----*/
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ padding-left:15% ;
+ padding-right:15% ;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  border: 1px solid #d2d2d3;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+
+}
+
+h3{
+  text-align: center;
+}
+ 
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.form-label {
+  font-weight: 500;
+ 
+}
+.accessibility{
+  font-weight: 500;
+}
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="number"],
+.form select,
+.accessibility select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.btn {
+  text-align: center;
+}
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+  margin-top: 5px;
+}
+.form .btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+
+}
+
+.form .submit-btn {
+  padding: 10px 20px;
+  background-color: rgb(85, 82, 82);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.form .submit-btn:hover {
+  background-color: rgb(71, 70, 70);
+}
+
+.add-user-card{
+
+  margin-top: 20px;
+  gap: 20px;
+  
+} 
+
+.existing-users{
+  cursor: pointer;
+}
+
+.existing-users:hover{
+  font-weight: 500;
+  color:  rgb(85, 82, 82);
+}
+.existing-operators{
+  cursor: pointer;
+}
+
+.additional-info {
+   display: none;
+
+}
+
+.additional-info.show {
+  display: block;
+
+}
+
+.existing-users-content{
+height: 600px;
+border: 1px solid black;
+}
+.existing-operators-content{
+  height: 600px;
+  border: 1px solid blue;
+}
+
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+ .form input[type="text"],
+  .form input[type="password"],
+  .form input[type="number"],
+  .form select ,
+  .accessibility select {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+
+  .form {
+    padding-left:15% ;
+ padding-right:15% ;
+  }
+  .profileBox ul{
+    position: fixed;
+  }
+ 
+ 
+}
+@media (min-width:769px) {
+  #widgetsIcon{
+    display: none;
+  }
+    .profileBox ul{
+    position: fixed;
+  }
+  
+}
+
+/* Small <= 768px */
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+  
+  .header-right.responsive ul {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; 
+    position: relative;
+    margin-top: 12.5rem;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12); 
+ padding-left: 20px;
+ padding-right: 20px; 
+  }
+  .header-right.responsive ul li:hover{
+
+  font-weight: 600;
+  color: #666666;
+  cursor: pointer;
+
+  }
+  
+
+  
+.header-left{
+  margin-left: 2.5rem;
+}
+
+.popup-content{
+  margin-left:auto;
+
+}
+
+.add-user-card .card{
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+
+.popup-content{
+  width: 90vw;
+}
+  .profileBox ul{
+    position: fixed;
+  }
+
+}
+
+/* Extra Small <= 576px */
+@media screen and (max-width: 576px) {
+  .header-profile-text {
+    display: none;
+  }
+  .popup-content{
+    width: 100vw;
+  }
+  .profileBox ul{
+    position: fixed;
+  }
+}
+/* Graphs And Charts CSS */
+.chartorgraph {
+	display: inline-flex;
+	border: 2px solid;
+}
