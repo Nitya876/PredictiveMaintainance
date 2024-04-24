@@ -443,6 +443,19 @@ Hide the checkbox used for the menu toggle */
 .existing-operators-content .table th{
   background-color: #367952;
 }
+#additional-info-maintenance-req .table th{
+  background-color: #480091;
+}
+#existingUserTable td input{
+  height: 16px;
+  width: 16px;
+ 
+}
+
+#additional-info-maintenance-done .table th{
+  background-color: #00b9b9;
+}
+
 .table th {
    
     color: white;
@@ -486,6 +499,7 @@ Hide the checkbox used for the menu toggle */
 .delete-icon:hover {
     color: #bd2130;
 } 
+
 
 @media (max-width: 854px) {
 

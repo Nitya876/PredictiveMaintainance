@@ -103,6 +103,23 @@ new MultiSelectTag('access', {
         });
     });
 
+// MAINTENANCE REQUIRED
+document.addEventListener('DOMContentLoaded', function () {
+  const existingUsersCard = document.getElementById('maintenance-required');
+  const existingOperatorsCard = document.getElementById('maintenance-done');
+  const additionalInfoUsers = document.getElementById('additional-info-maintenance-req');
+  const additionalInfoOperators = document.getElementById('additional-info-maintenance-done');
+
+  existingUsersCard.addEventListener('click', function () {
+      additionalInfoUsers.classList.toggle('show');
+      additionalInfoOperators.classList.remove('show');
+  });
+
+  existingOperatorsCard.addEventListener('click', function () {
+      additionalInfoOperators.classList.toggle('show');
+      additionalInfoUsers.classList.remove('show');
+  });
+});
 
 
 
