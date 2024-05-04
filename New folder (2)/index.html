@@ -1,25 +1,5 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
-
-
-
-
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -38,7 +18,7 @@
 
 <!-- Custom CSS -->
 <link rel="stylesheet" type="text/css"
-	href="/css/styles.css" />
+	href="styles.css" />
 <!-- -------------------added section------------------ -->
 
 <!-- External library for accessibility -->
@@ -50,7 +30,7 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 <!-- -------------------added section------------------ -->
-<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5Lb55lNl5KLm-Rl3isHRB1KgncM8TdA7FvorCNkimfp9zmkfH-0XJHHm-Qr2X4yG_5zySgzRg6sZzuXLeop6Gg" charset="UTF-8"></script></head>
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=P5JbCYkr3or_ATq78pAWfsacaEtqZdwPrd33wP8K9bymdWvhrX-DsA5RNs7_gc0aGAq8lRlb1W7Gekrysf9zzg" charset="UTF-8"></script></head>
 <body>
 	<div class="grid-container">
 
@@ -60,7 +40,7 @@
 				<span class="material-icons-outlined">menu</span>
 			</div>
 
-			<div class="header-left" onclick="openProfile1()">
+			<div class="header-left" onclick="openProfile()">
 
 				<!-- added section  -->
 				<span class="material-icons-outlined text-blue">
@@ -68,49 +48,51 @@
 				</span>
 				<!-- <span class="header-profile-text" >User Not Found 
 				</span> -->
-
+				
 				
 				<span class="header-profile-text">  Priti (ADMIN) 
 				</span>
 			</div>
 
-			<div id="profileBox" class="profileBox" style="display: none;">
+
+
+
+			<div id="profileBox" class="profileBox"
+				style="display: none; position: fixed;">
 				<!-- Profile box content -->
-				<ul style="padding: 8px;">
-					<li><span> 
-							 Priti (ADMIN)
-							
+				<ul>
+					<li><span>  Priti (ADMIN) 
 					</span><br> <span>Email: admin@gmail.com</span><br> <span>Phone
 							No. : 7082270402</span></li>
-					<li><a onclick="changePasswordPopUp1()"><span
+					
+					<li><a onclick="changePasswordPopUp()"><span
 							class="material-icons-outlined" style="color: blue;">lock_reset</span>Change
 							Password</a>
-						<div id="changePasswordPopUpDiv"
-							style="display: none; ">
-							<form method="post" id="changePasswordForm" class="form">
-								<h2>Change Password</h2>
-								<div >
+						<div id="changePasswordPopUpDiv" style="display: none;">
+							<form action="/changePassword" method="post" id="form"
+								class="changePasswordForm">
+								<h3>Change Password</h3>
+								<div>
 									<label for="OldPassword">Old Password:</label> <input
-										type="password" id="oldPassword" name="oldPassword"
+										type="text" id="OldPassword" name="oldPassword"
 										placeholder="Enter your Password" required>
 								</div>
 								<div>
-									<label for="NewPassword">New Password:</label> <input
-										type="password" id="newPassword" name="newPassword"
-										placeholder="Enter new Password" required>
+									<label for="Password">New Password:</label> <input type="text"
+										id="Password" name="password" placeholder="Enter new Password"
+										required>
 								</div>
 								<div>
-									<label for="rePassword">Re-Password:</label> <input
-										type="password" id="rePassword" name="rePassword"
+									<label for="rePassword">Re-Password:</label> <input type="text"
+										id="rePassword" name="rePassword"
 										placeholder="Re-Enter new Password" required>
 								</div>
 
 
-								<div >
+								<div>
 									<button type="submit" class="submit-btn">Change</button>
 								</div>
 							</form>
-
 
 						</div></li>
 					<li><a onclick="logout()"><span
@@ -118,7 +100,6 @@
 								logout </span>Logout </a></li>
 					<!-- <li><a href=""> <span class="material-icons-outlined text-skyblue"> person </span>Profile </a></li> -->
 				</ul>
-				<!-- added section  -->
 			</div>
 
 			<!-- header-right -->
@@ -166,7 +147,7 @@
 					<!-- Your popup content here -->
 					<form id="addUserForm" class="form"
 						onsubmit="return validateForm()">
-						<h3>Create New User</h3>
+						<h3 id = "userCreationHeading">Create New User</h3>
 						<div class="form-group">
 							<label for="role" class="form-label">User Type:</label> <select
 								id="role" name="role">
@@ -247,11 +228,11 @@
 								<p>Existing Users</p>
 								<span class="material-symbols-outlined">group</span>
 							</div>
-							<span class="text-primary font-weight-bold">30</span>
+							<span class="text-primary font-weight-bold" id="user-count">Loading...</span>
 						</div>
 						<div class="additional-info" id="additional-info-users">
 							<div class="existing-users-content">
-								<table class="table" >
+								<table class="table" style="display:inline;">
 									<thead>
 										<tr>
 											<th>Employee Id</th>
@@ -277,7 +258,7 @@
 								<p>Existing Operators</p>
 								<span class="material-icons-outlined text-purple">engineering</span>
 							</div>
-							<span class="text-primary font-weight-bold">60</span>
+							<span class="text-primary font-weight-bold" id="operator-count">Loading...</span>
 						</div>
 						<div class="additional-info" id="additional-info-operators">
 							<div class="existing-operators-content">
@@ -427,20 +408,208 @@
 
 					<div class="card">
 						<div class="card-inner">
-							<p class="text-primary">Maintenance Require</p>
+							<p class="text-primary" id="maintenance-required">Maintenance
+								Require</p>
 							<span class="material-icons-outlined text-purple">engineering</span>
 						</div>
 						<span class="text-primary font-weight-bold">60</span>
 					</div>
 
+
+
 					<div class="card">
 						<div class="card-inner">
-							<p class="text-primary">Maintenance Done</p>
+							<p class="text-primary" id="maintenance-done">Maintenance
+								Done</p>
 							<span class="material-icons-outlined text-skyblue">task_alt</span>
 						</div>
 						<span class="text-primary font-weight-bold">6</span>
 					</div>
+
 				</div>
+				
+				<!-- start  maintenance done and maintenance require table  -->
+				
+				<div class="additional-info" id="additional-info-maintenance-req">
+<div class="existing-operators-content" >
+    <table class="table" >
+        <thead >
+            <tr>
+                <th>S.No.</th>
+                <th>Instrument Id</th>
+                <th>Instrument Type</th>
+                <th>Alert Date</th>
+                <th>Status</th>
+                <th class="maintainance-done">Maintainance Done</th>
+                
+            </tr>
+            
+        </thead>
+        <tbody id="existingUserTable">
+            <!-- Content will be added here via JavaScript -->
+            <tr>
+                <td>01.</td>
+                <td>rgfhk1467897</td>
+                <td>Nitya Bharti</td>
+                <td>8963788998</td>
+                <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates, Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+                
+            </tr>
+            <tr>
+                <td>02.</td>
+                <td>rgfhk146789</td>
+                <td>Nitya Bharti</td>
+                <td>8963788998</td>
+                <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates, Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+
+            </tr>
+            <tr>
+                <td>03.</td>
+                <td>rgfhk146787</td>
+                <td>Name</td>
+                <td>Phone No.</td>
+                <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates,Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+
+                    <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+
+            </tr>
+            <tr>
+                <td>04.</td>
+                <td> rgfhk146783</td>
+                <td>Name</td>
+                <td>Phone No.</td>
+                <td>Accessibility</td>
+                <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+
+            </tr>
+            <tr>
+                <td>05.</td>
+                <td>rgfhk146784</td>
+                <td>Name</td>
+                <td>Phone No.</td>
+                <td>Accessibility</td>
+                <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+
+            </tr>
+            <tr>
+                <td>06.</td>
+                <td>rgfhk146787</td>
+                <td>Name</td>
+                <td>Phone No.</td>
+                <td>Accessibility</td>
+                <td> <input type="checkbox" class="maintenance-checkbox" /></td>
+                <!-- <td  class="edit-icon"><span class="material-symbols-outlined">
+                    edit_note
+                    </span></td> -->
+                
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+</div>
+
+<div class="additional-info" id="additional-info-maintenance-done">
+    <div class="existing-operators-content">
+        <table class="table" >
+            <thead >
+                <tr>
+                    <th>S.No.</th>
+                    <th>Instrument Id</th>
+                    <th>Instrument Type</th>
+                    <th>Alert Date</th>
+                    <th>Status</th>
+                    <th>Maintainance Done Date</th>
+                    
+                    
+                </tr>
+                
+            </thead>
+            <tbody id="existingUserTable">
+                <!-- Content will be added here via JavaScript -->
+                <tr>
+                    <td>01.</td>
+                    <td>nityabharti123@gmail.com</td>
+                    <td>Nitya Bharti</td>
+                    <td>8963788998</td>
+                    <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates, Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+                <tr>
+                    <td>02.</td>
+                    <td>nityabharti123@gmail.com</td>
+                    <td>Nitya Bharti</td>
+                    <td>8963788998</td>
+                    <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates, Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+                <tr>
+                    <td>03.</td>
+                    <td>Email Id</td>
+                    <td>Name</td>
+                    <td>Phone No.</td>
+                    <td>Signals, Points,DC Track Circuit, AxleCounters, AFTC,Level Crossing Gates,Relays,Electronic Interlocking,Integrated Power Supply/Battery Charger,Surge Protection Devices,OFC Cable,Fuse AutoChangeover System ,Battery, Earth Leakage DEtector,Cables,Block Instruments,UFSBI,Temperature And Humidity of all Devices</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+                <tr>
+                    <td>04.</td>
+                    <td>Email Id</td>
+                    <td>Name</td>
+                    <td>Phone No.</td>
+                    <td>Accessibility</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+                <tr>
+                    <td>05.</td>
+                    <td>Email Id</td>
+                    <td>Name</td>
+                    <td>Phone No.</td>
+                    <td>Accessibility</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+                <tr>
+                    <td>06.</td>
+                    <td>Email Id</td>
+                    <td>Name</td>
+                    <td>Phone No.</td>
+                    <td>Accessibility</td>
+                    <td>14 March 2024</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+
+    
+    
+    </div>
+    </div>
+
+				
+				<!-- end  maintenance done and maintenance require table  -->
 
 				<div class="charts">
 
@@ -471,43 +640,7 @@
 					<div id="chart2" class="chartorgraph"></div>
 					<div id="chart3" class="chartorgraph"></div>
 					<div id="graphDataSetDiv" class="chartorgraph"></div>
-					<script>
-						document.addEventListener('DOMContentLoaded', function() {
-						    // Code to draw chart
-						    console.log("DOMContentLoaded event fired. Drawing chart...");
-						    console.log("Script inside");
-						    var currentJsArray = [[]];
-						    var voltageJsArray = [[]];
-						    var dateJsArray = [
-						        
-						];
-						    
-						    console.log(currentJsArray);
-						    console.log(voltageJsArray);
-						    console.log(dateJsArray);
-						    drawAreaChart(currentJsArray, dateJsArray, 'chart3');
-							
-							
-						
-						//To Multiseries Area Chart by method
-						
-						var currentWithDateArray =[
-						    
-						];
-							
-							
-							var voltageWithDateArray = [
-							    
-							];	
-							
-							var vibrationWithDateArray=null;
-							
-							var graphDataSet=[currentWithDateArray,voltageWithDateArray];
-							console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
-							drawMultiSeriesAreaChart(graphDataSet,'graphDataSetDiv','TestChart','day');
-						
-						});
-					</script>
+					
 					</div>												
 				
 			</section>
@@ -690,7 +823,7 @@
 					<div>
 						<p>DC Track Circuits section</p>
 						
-						<div class="chartorgraph">
+						<div class="chartorgraph" >
 							<div id="TestChart1">
 								<a href="#">
 									<!-- <span class="material-symbols-outlined"> open_in_new </span> -->
@@ -1004,19 +1137,16 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
 
-
 	<script
 		src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
 
 	<!-- Include moment.js library -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
 	<!-- Custom JS -->
-	<script src="/js/scripts.js"></script>
+	<script src="profile.js"></script>
 	<script src="/js/LoadGraph.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="/js/JqueryScript.js"></script>
-
 </body>
 </html>

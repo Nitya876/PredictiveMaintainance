@@ -103,7 +103,7 @@ new MultiSelectTag('access', {
         });
     });
 
-// MAINTENANCE REQUIRED
+// MAINTENANCE REQUIRED AND DONE
 document.addEventListener('DOMContentLoaded', function () {
   const existingUsersCard = document.getElementById('maintenance-required');
   const existingOperatorsCard = document.getElementById('maintenance-done');

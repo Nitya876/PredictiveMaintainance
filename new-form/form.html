@@ -1,41 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link href="form.css" rel="stylesheet">
-</head>
-<body>
-    <form action="" id="form" class="form">
-        <h2>Form</h2>
-        
-        <div class="form-group">
-            <label for="emp-id">Employee Id:</label>
-            <input type="number" id="emp-id" name="emp-id" placeholder="Enter your Employee Id">
-        </div>
-        <div class="form-group">
-            <label for="Name">Name:</label>
-            <input type="text" id="Name" name="Name" placeholder="Enter your Name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Id:</label>
-            <input type="text" id="email" name="email" placeholder="Enter your Email Id" >
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="number" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter your Phone Number">
-        </div>
-        <div class="form-group">
-            <label for="Password">Password:</label>
-            <input type="number" id="Password" name="Password" placeholder="Enter your Password" required>
-        </div>
-       
-      
-        <div class="btn">
-            <button type="submit" class="submit-btn">submit</button>
-        </div>
-    </form>
-    
-</body>
-</html>
+<div id="profileBox" class="profileBox" style="display: none;">
+    <!-- Profile box content -->
+    <ul style="padding: 8px;">
+        <li><span> 
+                <%
+                 if (user != null) {
+                 %> <%=user.getName() + " (" + user.getRole().substring(5) + ")"%>
+                <%
+                } else {
+                %> UserName(Role) <%
+                }
+                %>
+        </span><br> <span>Email: <%=user.getEmail()%></span><br> <span>Phone
+                No. : <%=user.getPhone()%></span></li>
+        <li><a onclick="changePasswordPopUp()"><span
+                class="material-icons-outlined" style="color: blue;">lock_reset</span>Change
+                Password</a>
+            <div id="changePasswordPopUpDiv"
+                style="display: none; ">
+                <form method="post" id="changePasswordForm" class="form" style ="width :40vw ;height : 40vh ">
+                    <h2>Change Password</h2>
+                    <div >
+                        <label for="OldPassword">Old Password:</label> <input
+                            type="password" id="oldPassword" name="oldPassword"
+                            placeholder="Enter your Password" required>
+                    </div>
+                    <div>
+                        <label for="NewPassword">New Password:</label> <input
+                            type="password" id="newPassword" name="newPassword"
+                            placeholder="Enter new Password" required>
+                    </div>
+                    <div>
+                        <label for="rePassword">Re-Password:</label> <input
+                            type="password" id="rePassword" name="rePassword"
+                            placeholder="Re-Enter new Password" required>
+                    </div>
+
+
+                    <div >
+                        <button type="submit" class="submit-btn" >Change</button>
+                    </div>
+                </form>
+
+l
+            </div></li>
+        <li><a onclick="logout()"><span
+                class="material-icons-outlined" style="color: red;">
+                    logout </span>Logout </a></li>
+        <!-- <li><a href=""> <span class="material-icons-outlined text-skyblue"> person </span>Profile </a></li> -->
+    </ul>
+    <!-- added section  -->
+</div>
